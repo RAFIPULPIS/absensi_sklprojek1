@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "600787927304",
+    "project_id": "absensiprojek1",
+    "storage_bucket": "absensiprojek1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:600787927304:android:1361a8c6085f978fb66cbd",
+        "android_client_info": {
+          "package_name": "com.example.attendance_"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAc_8ul3RsgEx_QqSZrsnE8JsVVoUsqJ48"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
