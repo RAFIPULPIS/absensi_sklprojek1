@@ -1,3 +1,6 @@
+import 'package:attendance_/ui/absent/absent_screen.dart';
+import 'package:attendance_/ui/attend/attend_screen.dart';
+import 'package:attendance_/ui/attendance_history/attendance_history_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -34,11 +37,21 @@ class HomeScreen extends StatelessWidget {
                 Expanded(
                   // efect when click
                   child: InkWell(
+                    highlightColor: Colors.transparent,
+                    splashColor: Colors.transparent,
+                    onTap: (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const AttendScreen()),
+                         
+                      );
+                    },
                     child: const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Image(
-                          image: AssetImage('assets/images/ic_absen.png'),
+                          image: AssetImage('assets/images/ic_absent.png'),
                           height: 100,
                           width: 100,
                         ),
@@ -55,6 +68,16 @@ class HomeScreen extends StatelessWidget {
                 ),
                 Expanded(
                   child: InkWell(
+                    highlightColor: Colors.transparent,
+                    splashColor: Colors.transparent,
+                    onTap: (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const AbsentScreen()),
+                         
+                      );
+                    },
                     child: const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -76,6 +99,16 @@ class HomeScreen extends StatelessWidget {
                 ),
                 Expanded(
                   child: InkWell(
+                    highlightColor: Colors.transparent,
+                    splashColor: Colors.transparent,
+                    onTap: (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const AttendanceHistoryScreen() ),
+                         
+                      );
+                    },
                     child: const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
