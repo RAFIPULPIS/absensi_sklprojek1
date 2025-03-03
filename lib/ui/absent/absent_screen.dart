@@ -21,7 +21,7 @@ class _AbsentScreenState extends State<AbsentScreen> {
   final controllerName = TextEditingController();
   double dLat = 0.0, dLong = 0.0;
   final CollectionReference dataCollection =
-      FirebaseFirestore.instance.collection('attendance');
+    FirebaseFirestore.instance.collection('izinSiswaSiswi');
 
   int dateHours = 0, dateMinutes = 0;
   String dropValueCategories = "Please Choose:";
@@ -85,12 +85,13 @@ class _AbsentScreenState extends State<AbsentScreen> {
 
     try {
       await dataCollection.add({
-        'address': '-',
-        'name': nama,
-        'description': keterangan,
-        'datetime': '$from - $until',
-        'created_at': FieldValue.serverTimestamp(), // Tambahkan timestamp
-      });
+  'address': '-',
+  'name': nama,
+  'description': keterangan,
+  'datetime': '$from - $until',
+  'created_at': FieldValue.serverTimestamp(), // Tambahkan timestamp
+});
+
 
       // Tutup loader sebelum menampilkan pesan sukses
       Navigator.of(context).pop();
