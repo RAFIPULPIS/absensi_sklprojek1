@@ -2,6 +2,7 @@ import 'package:attendance_/ui/absent/absent_screen.dart';
 import 'package:attendance_/ui/attend/attend_screen.dart';
 import 'package:attendance_/ui/attendance_history/history_screen.dart';
 import 'package:attendance_/ui/izin/Form_screen.dart';
+import 'package:attendance_/ui/update/update_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -10,178 +11,111 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          // Header
-          SizedBox(
-            height: 50,
-            child: Scaffold(
-              appBar: AppBar(
-                backgroundColor: Colors.blueAccent,
-                centerTitle: true,
-                title: const Text(
-                  "Attendance - Flutter App Admin",
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
+      appBar: AppBar(
+        backgroundColor: Colors.blueAccent,
+        centerTitle: true,
+        title: const Text(
+          "Attendance - Flutter App Admin",
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+        ),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: GridView.count(
+          crossAxisCount: 2,
+          crossAxisSpacing: 16,
+          mainAxisSpacing: 16,
+          children: [
+            _buildMenuItem(
+              context,
+              title: "Attendance Record",
+              icon: "assets/images/ic_absent.png",
+              screen: AttendScreen(),
+            ),
+            _buildMenuItem(
+              context,
+              title: "Absent Record",
+              icon: "assets/images/ic_leave.png",
+              screen: AbsentScreen(),
+            ),
+            _buildMenuItem(
+              context,
+              title: "History",
+              icon: "assets/images/ic_history.png",
+              screen: const HistoryScreen(),
+            ),
+            _buildMenuItem(
+              context,
+              title: "Register Form",
+              icon: "assets/images/ic_apa.png",
+              screen: const StudentRegistrationForm(),
+            ),
+            _buildMenuItem(
+              context,
+              title: "Update",
+              icon: "assets/images/ic_history.png",
+              screen: UpdateScreen(
+                docId: "123",
+                name: "John Doe",
+                date: "2024-03-10",
               ),
             ),
-          ),
-
-          // Content
-          Expanded(
-            child: Column(
-              children: [
-                Expanded(
-                  child: InkWell(
-                    highlightColor: Colors.transparent,
-                    splashColor: Colors.transparent,
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => AttendScreen(),
-                        ),
-                      );
-                    },
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image(
-                          image: AssetImage('assets/images/ic_absent.png'),
-                          height: 100,
-                          width: 100,
-                        ),
-                        Text(
-                          "Attendance Record",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: InkWell(
-                    highlightColor: Colors.transparent,
-                    splashColor: Colors.transparent,
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => AbsentScreen(),
-                        ),
-                      );
-                    },
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image(
-                          image: AssetImage('assets/images/ic_leave.png'),
-                          height: 100,
-                          width: 100,
-                        ),
-                        Text(
-                          "Attendance Record",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: InkWell(
-                    highlightColor: Colors.transparent,
-                    splashColor: Colors.transparent,
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const HistoryScreen(),
-                        ),
-                      );
-                    },
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image(
-                          image: AssetImage('assets/images/ic_history.png'),
-                          height: 100,
-                          width: 100,
-                        ),
-                        Text(
-                          "history",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: InkWell(
-                    highlightColor: Colors.transparent,
-                    splashColor: Colors.transparent,
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const StudentRegistrationForm() ,
-                        ),
-                      );
-                    },
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image(
-                          image: AssetImage('assets/images/ic_apa.png'),
-                          height: 100,
-                          width: 100,
-                        ),
-                        Text(
-                          "register form",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
+          ],
+        ),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.blueAccent,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            "IDN Boarding School Solo",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
             ),
           ),
+        ),
+      ),
+    );
+  }
 
-          // Footer
-          SizedBox(
-            height: 50,
-            child: Scaffold(
-              appBar: AppBar(
-                backgroundColor: Colors.blueAccent,
-                centerTitle: true,
-                title: const Text(
-                  "IDN Boarding School Solo",
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
+  Widget _buildMenuItem(BuildContext context, {
+    required String title,
+    required String icon,
+    required Widget screen,
+  }) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => screen),
+        );
+      },
+      child: Card(
+        elevation: 4,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(icon, height: 80, width: 80),
+            const SizedBox(height: 10),
+            Text(
+              title,
+              style: const TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
