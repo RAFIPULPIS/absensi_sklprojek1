@@ -46,7 +46,7 @@ class HomeScreen extends StatelessWidget {
               context,
               title: "History",
               icon: "assets/images/ic_history.png",
-              screen: const HistoryScreen(),
+              screen: const AttendanceHistoryScreen(),
             ),
             _buildMenuItem(
               context,
